@@ -9,6 +9,7 @@ import="java.util.HashMap,
         org.xmpp.component.ComponentManagerFactory,
         org.jivesoftware.openfire.fastpath.util.WorkgroupUtils"%>
 
+<%@ page import="org.apache.commons.lang3.StringEscapeUtils"%>
 <!-- Define Administration Bean -->
 <%
     final XMPPServer xmppServer = XMPPServer.getInstance();
@@ -25,7 +26,7 @@ import="java.util.HashMap,
 <% // Get parameters //
     boolean create = request.getParameter("create") != null;
     boolean cancel = request.getParameter("cancel") != null;
-    String wgName = ParamUtils.getParameter(request, "wgName");
+    String wgName = StringEscapeUtils.escapeHtml4(ParamUtils.getParameter(request, "wgName"));
     String description = ParamUtils.getParameter(request, "description");
     String queueName = ParamUtils.getParameter(request, "queueName");
     String agents = ParamUtils.getParameter(request, "agents");
